@@ -10,7 +10,7 @@ echo "=> Ensuring Docker starts when you boot your system, ..."
 sudo chkconfig docker on
 echo "=> Done!"
 echo "=> Installing docker-compose ..."
-sudo curl -L https://github.com/docker/compose/releases/download/1.7.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+sudo sh -c "curl -L https://github.com/docker/compose/releases/download/1.7.1/docker-compose-`uname -s`-`uname -m` >/usr/local/bin/docker-compose 2>/dev/null"
 sudo chmod +x /usr/local/bin/docker-compose > /dev/null 2>&1
 echo "=> Done!"
 echo ""
