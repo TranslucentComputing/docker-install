@@ -1,7 +1,8 @@
 echo "=============================TC-INC DOCKER INSTALLATION==============================="
-echo "Docker Engine & Compose installation"
+echo "CentOS - Docker Engine & Compose installation"
 echo "======================================================================================"
-echo ""
+echo "Update yum packages"
+sudo yum update
 echo "=> Installing docker-engine ..."
 curl -fsSL https://get.docker.com/ | sh > /dev/null 2>&1
 echo "=> Starting docker-engine ..."
