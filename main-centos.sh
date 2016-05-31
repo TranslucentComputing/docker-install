@@ -12,10 +12,9 @@ echo "=> Done!"
 echo "=> Installing docker-compose ..."
 sudo yum install -y epel-release
 sudo yum install -y python-pip
-sudo yum upgrade python*
-sudo pip install --upgrade pip
-sudo pip install backports.ssl_match_hostname --upgrade
 sudo pip install docker-compose
+sudo yum upgrade python*
+sudo pip install backports.ssl_match_hostname --upgrade
 echo "=> Done!"
 echo "=> Add docker compose bash completion"
 sudo sh -c "curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/bash/docker-compose > /etc/bash_completion.d/docker-compose"
