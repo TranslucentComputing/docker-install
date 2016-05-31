@@ -11,9 +11,9 @@ sudo chkconfig docker on
 echo "=> Done!"
 echo "=> Installing docker-compose ..."
 sudo yum install -y epel-release
-sudo pip install --upgrade pip
 sudo yum install -y python-pip
 sudo yum upgrade python*
+sudo pip install --upgrade pip
 sudo pip install backports.ssl_match_hostname --upgrade
 sudo pip install docker-compose
 echo "=> Done!"
