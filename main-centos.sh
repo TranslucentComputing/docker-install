@@ -10,8 +10,11 @@ echo "=> Ensuring Docker starts when you boot your system, ..."
 sudo chkconfig docker on
 echo "=> Done!"
 echo "=> Installing docker-compose ..."
-sudo sh -c "curl -L https://github.com/docker/compose/releases/download/1.7.1/docker-compose-`uname -s`-`uname -m` >/usr/local/bin/docker-compose 2>/dev/null"
-sudo chmod +x /usr/local/bin/docker-compose > /dev/null 2>&1
+sudo yum install -y epel-release
+sudo yum install -y python-pip
+sudo pip install --upgrade pip
+sudo pip install backports.ssl_match_hostname --upgrade
+sudo pip install docker-compose
 echo "=> Done!"
 echo "=> Add docker compose bash completion"
 sudo sh -c "curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/bash/docker-compose > /etc/bash_completion.d/docker-compose"
