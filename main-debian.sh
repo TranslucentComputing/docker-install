@@ -48,6 +48,6 @@ docker --version
 echo ""
 docker-compose --version
 echo ""
-service docker status
+sudo service docker status
 echo ""
 echo "======================================================================================"
