@@ -2,12 +2,11 @@ echo "=============================TC-INC DOCKER INSTALLATION===================
 echo "Debian - Docker Engine & Compose installation"
 echo "======================================================================================"
 echo "Update packages"
-sudo apt-get purge lxc-docker*
-sudo apt-get purge docker.io*
 sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-#empty file
-echo -n /etc/apt/sources.list.d/docker.list
-echo "deb http://http.debian.net/debian wheezy-backports main" >> /etc/apt/sources.list.d/docker.list
+#create file if it does not exist
+sudo touch /etc/apt/sources.list.d/docker.list
+#add backports for docker engine
+sudo echo "deb http://http.debian.net/debian wheezy-backports main" | sudo tee --append /etc/apt/sources.list.d/docker.list
 sudo apt-cache policy docker-engine
 sudo apt-get update
 echo "=> Done!"
