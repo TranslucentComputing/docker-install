@@ -2,7 +2,11 @@ echo "=============================TC-INC DOCKER INSTALLATION===================
 echo "CentOS - Docker Engine & Compose installation"
 echo "======================================================================================"
 echo "=> Installing docker-engine ..."
-curl -fsSL https://get.docker.com/ | sh > /dev/null 2>&1
+curl -fsSL https://get.docker.com/ | bash > /dev/null 2>&1
+#Add user to docker group to avoid sudo on docker commands
+if [ "$user" != 'root' ]
+sudo usermod -aG docker $USER
+fi
 echo "=> Starting docker-engine ..."
 sudo service docker start> /dev/null 2>&1
 echo "=> Done!"
