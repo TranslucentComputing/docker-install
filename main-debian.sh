@@ -12,7 +12,7 @@ sudo echo "deb https://apt.dockerproject.org/repo debian-jessie main" | sudo tee
 sudo apt-get update
 echo "=> Done!"
 echo "=> Installing docker-engine ..."
-sudo apt-get install -y docker-engine
+sudo apt-get --yes --force-yes install docker-engine
 echo "=> Starting docker-engine ..."
 sudo service docker start> /dev/null 2>&1
 echo "=> Done!"
@@ -33,8 +33,7 @@ echo "=> Ensuring Docker starts when you boot your system, ..."
 sudo systemctl enable docker
 echo "=> Done!"
 echo "=> Installing docker-compose ..."
-sudo apt-get install -y epel-release
-sudo apt-get install -y python-pip
+sudo apt-get --yes --force-yes install epel-release python-pip
 sudo pip install --upgrade pip
 sudo pip install backports.ssl_match_hostname --upgrade
 sudo pip install docker-compose
