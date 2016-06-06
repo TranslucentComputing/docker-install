@@ -12,7 +12,7 @@ sudo echo "deb https://apt.dockerproject.org/repo debian-jessie main" | sudo tee
 sudo apt-get update
 echo "=> Done!"
 echo "=> Installing docker-engine ..."
-sudo apt-get install docker-engine
+sudo apt-get install -y docker-engine
 echo "=> Starting docker-engine ..."
 sudo service docker start> /dev/null 2>&1
 echo "=> Done!"
