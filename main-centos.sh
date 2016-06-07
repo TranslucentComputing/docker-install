@@ -4,7 +4,7 @@ echo "==========================================================================
 echo "=> Installing docker-engine ..."
 curl -fsSL https://get.docker.com/ | bash > /dev/null 2>&1
 #Add user to docker group to avoid sudo on docker commands
-if [ "$user" != 'root' ]
+if [ "$USER" != 'root' ]; then
 sudo usermod -aG docker $USER
 fi
 echo "=> Starting docker-engine ..."
