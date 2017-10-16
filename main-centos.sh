@@ -2,33 +2,22 @@ echo "=============================TC-INC DOCKER INSTALLATION===================
 echo "CentOS - Docker Engine & Compose installation"
 echo "======================================================================================"
 echo "=> Installing docker-engine ..."
-curl -fsSL https://get.docker.com/ | bash > /dev/null 2>&1
-#Add user to docker group to avoid sudo on docker commands
-if [ "$USER" != 'root' ]; then
-sudo usermod -aG docker $USER
-fi
-echo "=> Starting docker-engine ..."
-sudo service docker start> /dev/null 2>&1
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum install docker-ce
 echo "=> Done!"
-echo "=> Ensuring Docker starts when you boot your system, ..."
-sudo chkconfig docker on
-echo "=> Done!"
+
+echo "=> Add tcinc to docker group"
+sudo usermod -aG docker tcinc
+
 echo "=> Installing docker-compose ..."
-sudo yum install -y epel-release
-sudo yum install -y python-pip
-sudo pip install docker-compose
-sudo pip install backports.ssl_match_hostname --upgrade
+sudo curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
 echo "=> Done!"
+
 echo "=> Add docker compose bash completion"
-sudo sh -c "curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/bash/docker-compose > /etc/bash_completion.d/docker-compose"
+sudo sh -c "curl -L https://raw.githubusercontent.com/docker/compose/1.16.1/contrib/completion/bash/docker-compose > /etc/bash_completion.d/docker-compose"
 echo "=> Done!"
+
 echo "======================================================================================"
-echo "The latest versions of Docker Engine and Docker Compose has installed and configured:"
-echo ""
-docker --version
-echo ""
-docker-compose --version
-echo ""
-service docker status
-echo ""
+echo "UPDATE Config before starting docker!!"
 echo "======================================================================================"
