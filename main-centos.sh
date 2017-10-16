@@ -2,6 +2,7 @@ echo "=============================TC-INC DOCKER INSTALLATION===================
 echo "CentOS - Docker Engine & Compose installation"
 echo "======================================================================================"
 echo "=> Installing docker-engine ..."
+sudo yum install -y yum-utils
 sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 sudo yum install -y docker-ce
 echo "=> Done!"
